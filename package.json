@@ -1,0 +1,46 @@
+{
+  "name": "ng1spike",
+  "version": "0.1.0",
+  "devDependencies": {
+    "angular-mocks": "^1.4.3",
+    "babel": "^5.8.19",
+    "babel-eslint": "^4.0.5",
+    "babelify": "^6.1.3",
+    "browser-sync": "^2.8.1",
+    "browserify": "^11.0.1",
+    "chai": "^2.2.0",
+    "chai-as-promised": "^4.3.0",
+    "chai-jquery": "^2.0.0",
+    "connect-history-api-fallback": "0.0.5",
+    "eslint": "^0.24.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.13.2",
+    "gulp-util": "^3.0.4",
+    "gulp-watch": "^4.2.4",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.1.2",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "mocha": "^2.2.4",
+    "run-sequence": "^1.0.2",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0",
+    "sinon-promise": "^0.1.3",
+    "stringify": "^3.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.3.1"
+  },
+  "scripts": {
+    "postinstall": "npm dedupe"
+  },
+  "dependencies": {
+    "angular": "^1.4.3",
+    "angular-decorators": "^1.0.0",
+    "angular-ui-router": "^0.2.15",
+    "lodash": "^3.9.3",
+    "rx": "^2.5.3",
+    "zone.js": "^0.5.2"
+  }
+}
