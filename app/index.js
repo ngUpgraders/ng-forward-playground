@@ -22,10 +22,11 @@ class Test{
 class Nested{ }
 
 // A component where we'll showcase properties and events. Declare your properties and events as arrays 
-// just like Angular 2. 
+// just like Angular 2. You can rename an event locally by using the syntax 'localName: attrName'. If you just specify
+// a single string 'name' then it is used for both the local name and attr name.
 @Component({
 	selector: 'inner-app',
-	properties: ['message1', 'message2', 'message3'],
+	properties: ['message1', 'message2', 'msg3: message3'],
 	events: ['event1', 'evt2: event2']
 })
 // Set the view of the Component. Add the directives you'll be using to the 'directives' array. For now, there is no
@@ -45,7 +46,7 @@ class Nested{ }
 
 		<!-- A string value coming from the parent... basic stuff. -->
 		<h4>One Way String from Parent (read-only)</h4>
-		<p>{{innerApp.message3}}</p>
+		<p>{{innerApp.msg3}}</p>
 
 		<!-- In Angular 2, one way bindings are the default. We used some trickery to simulate one way data flow
 		     from the parent of this directive to this child. If this component tries to change 'message1'
