@@ -4,8 +4,9 @@ import 'zone.js';
 import uiRouter from 'angular-ui-router';
 import {Component, View, Inject, EventEmitter, bootstrap} from 'ng-forward';
 
-// In ng-forward you don't have to need to use a single decorator if you don't need any injectables.
-// This class has zero annotations. It's a regular es6 class. We wrap this in a service for you during bootstrap.
+// In ng-forward you don't have to need to use a single decorator if you don't
+// need any injectables. This class has zero annotations. It's a regular es6
+// class. We wrap this in a service for you during bootstrap.
 class Test{
 	getValue(){
 		return new Promise(resolve => {
@@ -14,23 +15,25 @@ class Test{
 	}
 }
 
-// A super simple component.
-// Notice ng-forward doesn't require you to use any calls to @Module, new Module or .Module like previous decorator
-// libraries. We auto create a module for you during bootstrap.
+// A super simple component. Notice ng-forward doesn't require you to use any calls
+// to @Module, new Module or .Module like previous decorator libraries. We auto
+// create a module for you during bootstrap.
 @Component({ selector: 'nested' })
 @View({ template: '<h3>Nested</h3>' })
 class Nested{ }
 
-// A component where we'll showcase properties and events. Declare your properties and events as arrays 
-// just like Angular 2. You can rename an event locally by using the syntax 'localName: attrName'. If you just specify
-// a single string 'name' then it is used for both the local name and attr name.
+// A component where we'll showcase properties and events. Declare your properties
+// and events as arrays just like Angular 2. You can rename an event locally by
+// using the syntax 'localName: attrName'. If you just specify a single string
+// 'name' then it is used for both the local name and attr name.
 @Component({
 	selector: 'inner-app',
 	properties: ['message1', 'message2', 'msg3: message3'],
 	events: ['event1', 'evt2: event2']
 })
-// Set the view of the Component. Add the directives you'll be using to the 'directives' array. For now, there is no
-// need to specify core directives (e.g. ng-if, ng-show, ng-repeat, etc).
+// Set the view of the Component. Add the directives you'll be using to the
+// 'directives' array. For now, there is no need to specify core directives
+// (e.g. ng-if, ng-show, ng-repeat, etc).
 @View({
 	directives: [Nested],
 	template: `
@@ -39,28 +42,36 @@ class Nested{ }
 		<nested></nested>
 
 		<h4>Event</h4>
-		<!-- We've created custom directives for all the standard dom events: click, change, scroll, etc. So you can
-		     use on-click instead of ng-click to match Angular 2 syntax -->
-		<button on-click="innerApp.triggerEventNormally()">Trigger DOM Event</button>
-		<button on-click="innerApp.triggerEventViaEventEmitter()">Trigger Emitted Event</button>
+		<!-- We've created custom directives for all the standard dom events:
+		     click, change, scroll, etc. So you can use on-click instead of ng-click
+		     to match Angular 2 syntax -->
+		<button on-click="innerApp.triggerEventNormally()">
+			Trigger DOM Event
+		</button>
+		<button on-click="innerApp.triggerEventViaEventEmitter()">
+			Trigger Emitted Event
+		</button>
 
 		<!-- A string value coming from the parent... basic stuff. -->
 		<h4>One Way String from Parent (read-only)</h4>
 		<p>{{innerApp.msg3}}</p>
 
-		<!-- In Angular 2, one way bindings are the default. We used some trickery to simulate one way data flow
-		     from the parent of this directive to this child. If this component tries to change 'message1'
-		     it will be unsuccessful, just like our Angular 2 forefathers wanted it to be. -->
+		<!-- In Angular 2, one way bindings are the default. We used some trickery
+		     to simulate one way data flow from the parent of this directive to this
+		     child. If this component tries to change 'message1' it will be
+		     unsuccessful, just like our Angular 2 forefathers wanted it to be. -->
 		<h4>One Way Binding from Parent (read-only)</h4>
 		<input ng-model="innerApp.message1"/>
 
-		<!-- If you truly need your precious two-way binding, here ya go. See how the parent binds to message2. -->
+		<!-- If you truly need your precious two-way binding, here ya go. See how
+		     the parent binds to message2. -->
 		<h4>Two Way Binding to/from Parent (read/write)</h4>
 		<input ng-model="innerApp.message2"/>
 	`
 })
-// Here we inject some elements into the constructor, notice how we inject our completely undecorated Test class.
-// Because it's been auto-assigned a service behind the scenes, we are able to inject it just fine. Also we'll inject
+// Here we inject some elements into the constructor, notice how we inject our
+// completely undecorated Test class. Because it's been auto-assigned a service
+// behind the scenes, we are able to inject it just fine. Also we'll inject
 // a reference the $element with a string. This is still very ng1, but it suffices.
 @Inject(Test, '$element')
 class InnerApp{
@@ -69,9 +80,10 @@ class InnerApp{
 		this.test = test;
 		this.resolveValue();
 
-		// If you register an event in the 'events' array in @Component, and that event is an instance of EventEmitter,
-		// then ng-forward sees that and allows you to broadcast that event as an observable with .next(). 
-		// See our EventEmitter class for more api info.
+		// If you register an event in the 'events' array in @Component, and that
+		// event is an instance of EventEmitter, then ng-forward sees that and allows
+		// you to broadcast that event as an observable with .next(). See our
+		// EventEmitter class for more api info.
 		this.evt2 = new EventEmitter();
 	}
 
@@ -80,7 +92,8 @@ class InnerApp{
 		this.num = await this.test.getValue();
 	}
 
-	// Example of how to trigger a non-EventEmitter event. It's just a dom event. These only bubble if you tell them to.
+	// Example of how to trigger a non-EventEmitter event. It's just a dom event.
+	// These only bubble if you tell them to.
 	triggerEventNormally() {
 		this.$element.triggerHandler('event1');
 	}
@@ -92,24 +105,28 @@ class InnerApp{
 }
 
 
-// Our root component which we will bootstrap below. Again no module management needed. Here we specify the non-directive
-// injectables we want to provide for injection in the 'bindings' array in @Component. Notice we are passing in
-// "ui.router" as a string; ng-forward recognizes this as a module and bundles it with this component. All of ui-router's
-// injectables are now available to inject into controllers or use in your templates.
+// Our root component which we will bootstrap below. Again no module management
+// needed. Here we specify the non-directive injectables we want to provide for
+// injection in the 'bindings' array in @Component. Notice we are passing in
+// "ui.router" as a string; ng-forward recognizes this as a module and bundles
+// it with this component. All of ui-router's injectables are now available to
+// inject into controllers or use in your templates.
 @Component({
 	selector: 'app',
 	bindings: [Test, "ui.router"]
 })
 @View({
-	// Again specifying directives to use. We really wanted to support specifying dependencies as Objects and not strings
-	// wherever possible. So we just pass in the InnerApp and Nested class references.
+	// Again specifying directives to use. We really wanted to support specifying
+	// dependencies as Objects and not strings wherever possible. So we just pass
+	// in the InnerApp and Nested class references.
 	directives: [InnerApp, Nested],
 	template: `
 		<h1>App</h1>
 		<nested></nested>
 		<p>Trigger count: {{ app.triggers }}</p>
 
-		<!-- You still have to use non-event ng1 directives, such as ng-model used here. -->
+		<!-- You still have to use non-event ng1 directives, such as ng-model
+		     used here. -->
 		<h4>One Way Binding to Child:</h4>
 		<input ng-model="app.message1"/>
 
@@ -118,10 +135,12 @@ class InnerApp{
 
 		<hr/>
 
-		<!-- Here we see various bindings and events in use. We are listening for the event1 and event2 events on inner-app.
-		     You have to prepend with 'on-' for events. With message 1, 2 and 3, we show the three ways you can bind to
-		     component properties: prop (with no prefix) will pass in a simple string, bind-prop will one-way bind to an
-		     expression, and bind-on-prop will two way bind to an expression. -->
+		<!-- Here we see various bindings and events in use. We are listening for
+		     the event1 and event2 events on inner-app. You have to prepend with
+		     'on-' for events. With message 1, 2 and 3, we show the three ways you
+		     can bind to component properties: prop (with no prefix) will pass in
+		     a simple string, bind-prop will one-way bind to an expression, and
+		     bind-on-prop will two way bind to an expression. -->
 		<inner-app on-event1="app.onIncrement()" on-event2="app.onIncrement()"
 		           bind-message1="app.message1" bind-on-message2="app.message2" message3="Hey, inner app... nothin'">
 		</inner-app>
@@ -139,7 +158,9 @@ class AppCtrl{
 	}
 }
 
-// Finally go ahead and bootstrap a component. It will look for the selector in your html and call ng1's bootstrap
-// method on it. What's cool is if you include zone.js in your app, we'll automatically bootstrap your app within the
-// context of a zone so you don't need to call $scope.$apply (Mike is this really true??).
+// Finally go ahead and bootstrap a component. It will look for the selector
+// in your html and call ng1's bootstrap method on it. What's cool is if you
+// include zone.js in your app, we'll automatically bootstrap your app within
+// the context of a zone so you don't need to call $scope.$apply (Mike is
+// this really true??).
 bootstrap(AppCtrl);
