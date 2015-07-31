@@ -84,7 +84,7 @@ function Build(watch, done){
 	}
 
 	gulp.task('setup-watchers', function(){
-		gulpwatch(['app/**/*.js', 'app/**/*.html'], function(){
+		gulpwatch(['app/**/*.js', 'app/**/*.html', 'node_modules/ng-forward/**/*.js'], function(){
 			gulp.run('bundle');
 		});
 
