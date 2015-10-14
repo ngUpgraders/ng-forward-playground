@@ -1,0 +1,41 @@
+<section class="todoapp">
+
+  <header class="header">
+    <h1>todos</h1>
+    <text-editor
+        (enter)="todoApp.addTodo()"
+        (abort)="todoApp.newTodoTitle = ''()"
+        [(value)]="todoApp.newTodoTitle"
+        placeholder="What needs to be done?"
+        input-classes="new-todo"></text-editor>
+  </header>
+
+  <section class="main" ng-show="todoApp.todoStore.todos.length" ng-cloak>
+
+    <input class="toggle-all"
+           type="checkbox"
+           ng-model="todoApp.allChecked"
+           ng-change="todoApp.todoStore.setAllTo(todoApp.allChecked)">
+    <label for="toggle-all">Mark all as complete</label>
+
+    <ul class="todo-list">
+      <li ng-repeat="todo in todoApp.getFilteredTodos() track by $index"
+          ng-class="{completed: todo.completed, editing: todo.editing}">
+
+        <todo-view
+            [todo]="todo"
+            (title-change)="todoApp.todoStore.save()"
+            (completed-change)="todoApp.todoStore.save()"
+            (remove)="todoApp.todoStore.remove(todo)"></todo-view>
+      </li>
+    </ul>
+
+  </section>
+
+  <footer class="footer"
+          [remaining-count]="todoApp.todoStore.countRemaining()"
+          [completed-count]="todoApp.todoStore.countCompleted()"
+          (clear-completed)="todoApp.todoStore.removeCompleted()"
+          ng-show="todoApp.todoStore.todos.length"
+          ng-cloak></footer>
+</section>
