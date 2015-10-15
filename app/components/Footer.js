@@ -14,7 +14,7 @@ import Filters from './Filters';
       <ng-pluralize count="footer.remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
     </span>
     <filters [status]="footer.status"></filters>
-    <button class="clear-completed" ng-click="footer.clearCompleted.next()" ng-show="footer.completedCount">Clear completed</button>
+    <button class="clear-completed" (click)="footer.clearCompleted.next()" ng-show="footer.completedCount">Clear completed</button>
     `
 })
 export default class Footer {

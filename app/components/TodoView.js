@@ -10,8 +10,8 @@ import {Component, View, EventEmitter} from 'ng-forward';
   `
   <div class="view">
     <input class="toggle" type="checkbox" ng-model="todoView.todo.completed" ng-change="todoView.completedChange.next()">
-    <label ng-dblclick="todoView.todo.editing = true" ng-hide="todoView.todo.editing">{{todoView.todo.title}}</label>
-    <button class="destroy" ng-click="todoView.remove.next()"></button>
+    <label (dblclick)="todoView.todo.editing = true" ng-hide="todoView.todo.editing">{{todoView.todo.title}}</label>
+    <button class="destroy" (click)="todoView.remove.next()"></button>
   </div>
   <text-editor
       ng-show="todoView.todo.editing"
