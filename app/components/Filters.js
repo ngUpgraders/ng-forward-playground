@@ -2,9 +2,7 @@ import {Component, View} from 'ng-forward';
 
 @Component({
   selector: 'filters',
-  properties: ['status']
-})
-@View({
+  inputs: ['status']
   template:
     `
     <ul class="filters">
