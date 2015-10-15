@@ -2,10 +2,8 @@ import {Component, View, EventEmitter} from 'ng-forward';
 
 @Component({
   selector: 'todo-view',
-  properties: ['todo'],
-  events: ['titleChange', 'completedChange', 'remove']
-})
-@View({
+  inputs: ['todo'],
+  outputs: ['titleChange', 'completedChange', 'remove']
   template:
   `
   <div class="view">

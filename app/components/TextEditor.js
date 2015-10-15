@@ -6,10 +6,8 @@ const ENTER_KEY = 13;
 
 @Component({
   selector: 'text-editor',
-  properties: ['value', 'placeholder', 'inputClasses', 'focusOn'],
-  events: ['start', 'enter', 'end', 'abort']
-})
-@View({
+  inputs: ['value', 'placeholder', 'inputClasses', 'focusOn'],
+  outputs: ['start', 'enter', 'end', 'abort']
   directives: [FocusOn],
   template:
   `<input class="{{textEditor.inputClasses}}" placeholder="{{textEditor.placeholder}}"

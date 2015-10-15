@@ -8,8 +8,6 @@ import TodoView from './TodoView';
 @Component({
   selector: 'todo-app',
   bindings: [TodoStore]
-})
-@View({
   directives: [TextEditor, TodoView, Footer],
   template: require('./TodoApp.html')
 })

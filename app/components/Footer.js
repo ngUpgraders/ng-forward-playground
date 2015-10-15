@@ -3,10 +3,8 @@ import Filters from './Filters';
 
 @Component({
   selector: 'footer',
-  properties: ['status', 'remainingCount', 'completedCount'],
-  events: ['clearCompleted']
-})
-@View({
+  inputs: ['status', 'remainingCount', 'completedCount'],
+  outputs: ['clearCompleted']
   directives: [Filters],
   template:
     `
