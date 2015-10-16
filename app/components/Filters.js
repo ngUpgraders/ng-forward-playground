@@ -1,8 +1,8 @@
-import {Component, View} from 'ng-forward';
+import {Component} from 'ng-forward';
 
 @Component({
   selector: 'filters',
-  inputs: ['status']
+  inputs: ['status'],
   template:
     `
     <ul class="filters">

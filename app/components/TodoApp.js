@@ -1,4 +1,4 @@
-import {Inject, Component, View} from 'ng-forward';
+import {Inject, Component} from 'ng-forward';
 import {TodoStore} from '../services/TodoStore';
 import Footer from './Footer';
 import TextEditor from './TextEditor';
@@ -7,7 +7,7 @@ import TodoView from './TodoView';
 
 @Component({
   selector: 'todo-app',
-  bindings: [TodoStore]
+  bindings: [TodoStore],
   directives: [TextEditor, TodoView, Footer],
   template: require('./TodoApp.html')
 })

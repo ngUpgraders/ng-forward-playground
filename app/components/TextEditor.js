@@ -1,4 +1,4 @@
-import {Component, View, EventEmitter, Inject} from 'ng-forward';
+import {Component, EventEmitter, Inject} from 'ng-forward';
 import FocusOn from '../directives/FocusOn';
 
 const ESC_KEY = 27;
@@ -7,7 +7,7 @@ const ENTER_KEY = 13;
 @Component({
   selector: 'text-editor',
   inputs: ['value', 'placeholder', 'inputClasses', 'focusOn'],
-  outputs: ['start', 'enter', 'end', 'abort']
+  outputs: ['start', 'enter', 'end', 'abort'],
   directives: [FocusOn],
   template:
   `<input class="{{textEditor.inputClasses}}" placeholder="{{textEditor.placeholder}}"

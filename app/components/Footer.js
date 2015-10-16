@@ -1,10 +1,10 @@
-import {Component, View, EventEmitter} from 'ng-forward';
+import {Component, EventEmitter} from 'ng-forward';
 import Filters from './Filters';
 
 @Component({
   selector: 'footer',
   inputs: ['status', 'remainingCount', 'completedCount'],
-  outputs: ['clearCompleted']
+  outputs: ['clearCompleted'],
   directives: [Filters],
   template:
     `
