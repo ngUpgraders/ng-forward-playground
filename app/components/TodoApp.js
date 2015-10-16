@@ -3,22 +3,22 @@ import {TodoStore} from '../services/TodoStore';
 import Footer from './Footer';
 import TextEditor from './TextEditor';
 import TodoView from './TodoView';
-
+import Filters from '../services/Filters';
 
 @Component({
   selector: 'todo-app',
-  bindings: [TodoStore],
+  bindings: [TodoStore, Filters],
   directives: [TextEditor, TodoView, Footer],
   template: require('./TodoApp.html')
 })
-@Inject(TodoStore, '$location')
+@Inject(TodoStore, Filters)
 export default class TodoApp {
 
   todoStore: TodoStore;
   newTodoTitle: string;
 
-  constructor(todoStore, $location) {
-    this.$location = $location;
+  constructor(todoStore, filters) {
+    this.filters = filters;
     this.todoStore = todoStore;
     this.newTodoTitle = '';
   }
@@ -32,13 +32,6 @@ export default class TodoApp {
   }
 
   getFilteredTodos() {
-    switch(this.$location.path()) {
-      case '/completed':
-        return this.todoStore.todos.filter(todo => todo.completed);
-      case '/active':
-        return this.todoStore.todos.filter(todo => !todo.completed);
-      default:
-        return this.todoStore.todos;
-    }
+    return this.todoStore.todos.filter(() => this.filters.current());
   }
 }
