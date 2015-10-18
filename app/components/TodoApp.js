@@ -7,7 +7,7 @@ import Filters from '../services/Filters';
 
 @Component({
   selector: 'todo-app',
-  bindings: [TodoStore, Filters],
+  providers: [TodoStore, Filters],
   directives: [TextEditor, TodoView, Footer],
   template: require('./TodoApp.html')
 })
@@ -32,6 +32,6 @@ export default class TodoApp {
   }
 
   getFilteredTodos() {
-    return this.todoStore.todos.filter(() => this.filters.current());
+    return this.todoStore.todos.filter(this.filters.current());
   }
 }
