@@ -1,3 +1,5 @@
+import {Injectable} from 'ng-forward';
+
 /* global localStorage */
 export class Todo {
   completed: Boolean;
@@ -8,6 +10,7 @@ export class Todo {
   }
 }
 
+@Injectable()
 export class TodoStore {
 
   todos: Array<Todo>;

@@ -1,5 +1,6 @@
-import {Inject} from 'ng-forward';
+import {Injectable, Inject} from 'ng-forward';
 
+@Injectable()
 @Inject('$location')
 export default class Filters {
   constructor($location) {
