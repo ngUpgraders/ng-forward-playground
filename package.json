@@ -4,6 +4,7 @@
   "repository": "https://github.com/ngUpgraders/ng-forward-playground",
   "version": "0.1.0",
   "devDependencies": {
+    "aliasify": "^1.8.0",
     "angular-mocks": "^1.4.3",
     "babel": "^5.8.19",
     "babel-eslint": "^4.0.5",
@@ -20,6 +21,7 @@
     "gulp-util": "^3.0.4",
     "gulp-watch": "^4.2.4",
     "karma": "^0.12.31",
+    "karma-angular": "0.0.6",
     "karma-browserify": "^4.1.2",
     "karma-chrome-launcher": "^0.1.5",
     "karma-mocha": "^0.1.10",
@@ -39,12 +41,9 @@
   },
   "dependencies": {
     "angular": "^1.4.3",
-    "angular-decorators": "^1.0.0",
-    "angular-ui-router": "^0.2.15",
-    "lodash": "^3.9.3",
-    "rx": "^2.5.3",
+    "ng-forward": "0.0.1-alpha.7",
+    "reflect-metadata": "^0.1.2",
     "todomvc-app-css": "^2.0.1",
-    "todomvc-common": "^1.0.2",
-    "zone.js": "^0.5.2"
+    "todomvc-common": "^1.0.2"
   }
 }

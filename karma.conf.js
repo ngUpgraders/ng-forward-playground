@@ -1,30 +1,31 @@
 /* global module */
 module.exports = function(karma) {
   karma.set({
-    autoWatch: true,
     basePath: '',
-    frameworks: ['mocha', 'browserify'],
-    files: [ 'app/**/*.spec.js' ],
-    exclude: [],
-    port: 9018,
-    runnerPort: 9101,
-    browsers: [
-      'Chrome'
+
+    frameworks: ['angular', 'mocha', 'browserify'],
+    angular: ['mocks'],
+
+    files: [
+      'app/**/*.spec.js'
     ],
+
+    browsers: ['Chrome'],
+
     reporters: ['mocha'],
+
     singleRun: false,
+    autoWatch: true,
     colors: true,
-    logLevel: karma.LOG_INFO,
+
     preprocessors: {
       'app/**/*.js': ['browserify']
     },
+
     browserify: {
       debug: true,
       transform: [
-        ['stringify'],
-        ['babelify', {
-          stage: 0
-        }]
+        ['babelify', { stage: 0 }]
       ]
     }
   });

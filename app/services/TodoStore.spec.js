@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 import {expect, sinon} from '../tests/frameworks';
 import {Todo, TodoStore} from './TodoStore';
 
@@ -9,7 +7,7 @@ describe('Todo', () => {
       new Todo();
     }
 
-    expect(fn).to.throw(/undefined is not an object/);
+    expect(fn).to.throw(/Cannot read property 'trim' of undefined/);
   });
 
   it('trims the given title', () => {

@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 import {expect, sinon} from '../tests/frameworks';
 import Filters from './Filters';
 
